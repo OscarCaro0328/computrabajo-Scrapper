@@ -22,7 +22,7 @@ Clone the repository:
 git clone https://github.com/your-username/computrabajo-Scrapper.git
 Change into the project directory:
 
-cd computrabajo
+cd computrabajo-Scrapper
 Customize the configuration file config.py with your preferred search criteria, email settings, and file paths.
 
 Run the program:

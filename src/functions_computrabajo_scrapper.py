@@ -1,10 +1,12 @@
 from typing import List
 
+
 import requests
 import csv
 import time
 import math
 from bs4 import BeautifulSoup
+import config
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -137,7 +139,7 @@ def obtener_total_paginas():
 
 def guardar_csv(data):
     # Open the file for writing
-    with open('data\data.csv', mode='w', newline='', encoding='UTF-16') as file:
+    with open(config.attachment_filename, mode='w', newline='', encoding='UTF-16') as file:
         # Create a CSV writer object
         writer = csv.writer(file, delimiter="\t")
 

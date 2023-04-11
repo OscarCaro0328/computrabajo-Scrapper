@@ -24,7 +24,7 @@ functions_computrabajo_scrapper.popup_cancelar()
 total_paginas=functions_computrabajo_scrapper.obtener_total_paginas()
 
 #bucle para revisar la informacion del total paginas
-for i in range(1): 
+for i in range(total_paginas): 
     print(f"Pagina numero : {i+1}")
     pagina_actual=functions_computrabajo_scrapper.load_soup()
     trabajos = functions_computrabajo_scrapper.cargar_id_trabajos(pagina_actual)

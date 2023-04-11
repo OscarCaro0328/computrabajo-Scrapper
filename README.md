@@ -19,7 +19,7 @@ pip install -r requirements.txt
 Usage
 Clone the repository:
 
-git clone https://github.com/your-username/computrabajo.git
+git clone https://github.com/your-username/computrabajo-Scrapper.git
 Change into the project directory:
 
 cd computrabajo

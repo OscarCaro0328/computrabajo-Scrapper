@@ -13,34 +13,26 @@ openpyxl
 smtplib
 email.mime.text
 email.mime.multipart
-You can install them by running the following command:
 
-bash
-Copy code
+You can install them by running the following command:
 pip install -r requirements.txt
 Usage
 Clone the repository:
-bash
-Copy code
+
 git clone https://github.com/your-username/computrabajo.git
 Change into the project directory:
-bash
-Copy code
+
 cd computrabajo
 Customize the configuration file config.py with your preferred search criteria, email settings, and file paths.
 
 Run the program:
 
-bash
-Copy code
 python main.py
 Check the generated CSV file and email attachment with the extracted information.
 File Structure
 The project follows this file structure:
 
-css
-Copy code
-computrabajo/
+computrabajo-Scrapper/
 ├── data/
 │   └── data.csv
 ├── src/
@@ -57,8 +49,4 @@ The main.py file runs the main program.
 The README.md file is this document.
 The requirements.txt file lists the required libraries and their versions.
 Authors
-Your Name
-Acknowledgments
-Hat tip to anyone whose code was used
-Inspiration
-etc.
+Oscar Caro

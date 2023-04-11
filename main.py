@@ -1,7 +1,7 @@
-import src.functions_computrabajo_scrapper as functions_computrabajo_scrapper
+from datetime import date, datetime
+
 import config
-from datetime import datetime
-from datetime import date
+import src.functions_computrabajo_scrapper as functions_computrabajo_scrapper
 import src.send_email as send_email
 
 #parametros de inicio
@@ -11,11 +11,10 @@ data=[]
 job_type = config.job_type
 job_location = config.job_location
 url = config.url
-today = config.today
 email_receiver_list = config.email_receiver_list
 subject= config.subject
 attachment_filename = config.attachment_filename
-body = config.body
+
 
 #Main program
 tiempo_inicial = datetime.now()
@@ -25,15 +24,13 @@ functions_computrabajo_scrapper.popup_cancelar()
 total_paginas=functions_computrabajo_scrapper.obtener_total_paginas()
 
 #bucle para revisar la informacion del total paginas
-for i in range(total_paginas): 
+for i in range(1): 
     print(f"Pagina numero : {i+1}")
     pagina_actual=functions_computrabajo_scrapper.load_soup()
     trabajos = functions_computrabajo_scrapper.cargar_id_trabajos(pagina_actual)
-    #time.sleep(0.1)
     data_pagina=functions_computrabajo_scrapper.iterar_trabajos(trabajos) 
     data.extend(data_pagina)  
     functions_computrabajo_scrapper.siguiente_bloque_ofertas()
-    #time.sleep(0.1)
     functions_computrabajo_scrapper.delete_cookies()
 
 

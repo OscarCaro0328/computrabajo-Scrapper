@@ -5,14 +5,13 @@ import csv
 import time
 import math
 from bs4 import BeautifulSoup
-import os
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import ElementNotInteractableException
+
 
 ofertas_empleos = []
 errores = 0

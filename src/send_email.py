@@ -1,14 +1,15 @@
 import smtplib
+import config 
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
-import os
 
-email_password =os.environ.get('gmail_password') #clave creada por la aplicacion
-smtp_port=587
-smtp_server= 'smtp.gmail.com'
-email_sender ='ingenieros.caroni@gmail.com'
+
+email_password =config.email_password
+smtp_port=config.smtp_port
+smtp_server= config.smtp_server
+email_sender =config.email_sender
 
 
 #Send email with no attachment
@@ -86,5 +87,3 @@ def send_email_attach(email_receiver_list: list[str], subject: str, body:str, at
         except Exception as e:
             print("exception raised:", e)
     TIE_server.quit()
-
-

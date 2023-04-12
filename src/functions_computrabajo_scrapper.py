@@ -1,12 +1,11 @@
 from typing import List
 
-
 import requests
 import csv
 import time
 import math
 from bs4 import BeautifulSoup
-import config
+import os
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -18,7 +17,7 @@ from selenium.common.exceptions import ElementNotInteractableException
 ofertas_empleos = []
 errores = 0
 headers = {
-    'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"}
+    'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
 # driver.set_window_size(1920, 1080)
 service = Service(executable_path="chromedriver.exe")
 driver = webdriver.Chrome(service=service)
@@ -137,9 +136,9 @@ def obtener_total_paginas():
     return total_paginas
 
 
-def guardar_csv(data):
+def guardar_csv(attachment, data):
     # Open the file for writing
-    with open(config.attachment_filename, mode='w', newline='', encoding='UTF-16') as file:
+    with open(attachment, mode='w', newline='', encoding='UTF-16') as file:
         # Create a CSV writer object
         writer = csv.writer(file, delimiter="\t")
 

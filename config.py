@@ -1,8 +1,11 @@
 import os
+from datetime import date
+
+
 
 #Parametros para configurar la busqueda
-job_type = 'Ingeniero Mecatronico'
-job_location = 'Bogota'
+job_type = 'English'
+job_location = ''
 
 #Parametros para configurar envio de email.
 email_sender ='ingenieros.caroni@gmail.com'
@@ -21,4 +24,5 @@ smtp_server= 'smtp.gmail.com'
 
 #parametros staticos ( No es necesario cambiar)
 url = 'http://co.computrabajo.com/'
-attachment_filename = 'data\data.csv'
+today = date.today()
+attachment_filename = f".\data\{job_type}_{job_location}_{today}.csv"

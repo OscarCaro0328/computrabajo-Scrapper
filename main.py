@@ -23,7 +23,7 @@ functions_computrabajo_scrapper.popup_cancelar()
 total_paginas=functions_computrabajo_scrapper.obtener_total_paginas()
 
 #bucle para revisar la informacion del total paginas
-for i in range(1): 
+for i in range(total_paginas): 
     print(f"Pagina numero : {i+1}")
     pagina_actual=functions_computrabajo_scrapper.load_soup()
     trabajos = functions_computrabajo_scrapper.cargar_id_trabajos(pagina_actual)
@@ -32,6 +32,8 @@ for i in range(1):
     functions_computrabajo_scrapper.siguiente_bloque_ofertas()
     functions_computrabajo_scrapper.delete_cookies()
 
+#do some analysis on the listings
+#functions_computrabajo_scrapper.word_frequency_analysis(data)
 
 #enviar la informacion a una tabla de csv
 functions_computrabajo_scrapper.guardar_csv(config.attachment_filename ,data)
@@ -55,5 +57,5 @@ body = f"""
       """
 
 #enviar email con la informacion recolectada
-email_params=[email_receiver_list, subject, body, attachment_filename]
+#email_params=[email_receiver_list, subject, body, attachment_filename]
 send_email.send_email_attach(email_receiver_list, subject, body, attachment_filename)

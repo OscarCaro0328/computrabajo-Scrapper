@@ -4,6 +4,7 @@ import requests
 import csv
 import time
 import math
+import collections
 from bs4 import BeautifulSoup
 
 from selenium import webdriver
@@ -94,13 +95,12 @@ def iterar_trabajos(trabajos):
 
             # Go back to the search results page
             driver.back()
-            time.sleep(0.2)
         except Exception as e:
-            print("error: ", e)
+            print("error al dar click a un link, lleva a pag no encontrada: ", e)
             global errores
             errores += 1
             print("errores: ", errores)
-
+            driver.back()
     return ofertas_empleos
 
  # funcion para dar click a siguiente pagina
@@ -117,14 +117,17 @@ def siguiente_bloque_ofertas():
     try:
         siguiente = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="offersGridOfferContainer"]/div[8]/span[2]')))
         driver.execute_script("arguments[0].click();", siguiente)
+        
+        # Wait for the page to fully load
+        wait = WebDriverWait(driver, 10)
+        wait.until(lambda driver: driver.execute_script("return document.readyState") == "complete")
     except Exception as e:
         print("Error: ", e)
 
 
 def delete_cookies():
     driver.delete_all_cookies()
-    time.sleep(0.1)
-    driver.refresh()
+
 
 
 def obtener_total_paginas():
@@ -135,9 +138,9 @@ def obtener_total_paginas():
     return total_paginas
 
 
-def guardar_csv(attachment, data):
+def guardar_csv(attachment_filename, data):
     # Open the file for writing
-    with open(attachment, mode='w', newline='', encoding='UTF-16') as file:
+    with open(attachment_filename, mode='w', newline='', encoding='UTF-16') as file:
         # Create a CSV writer object
         writer = csv.writer(file, delimiter="\t")
 
@@ -150,4 +153,3 @@ def guardar_csv(attachment, data):
                 print("caracter no valido")
 
     print('Data written successfully.')
-    

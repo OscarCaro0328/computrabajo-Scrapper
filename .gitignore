@@ -3,3 +3,6 @@ venv/
 
 # Ignore pipenv lock file
 Pipfile.lock
+
+#Ignore the data folder
+data/
